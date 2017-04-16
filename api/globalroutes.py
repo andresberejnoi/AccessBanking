@@ -10,9 +10,15 @@ def home():
 def get_message():
   data = request.data
   data = json.loads(data)
-  #balance_msg = bankInstance.getBalance(cfg['bank']['bank_id'], cfg['bank']['account'])
-  most_recent_msg = bankInstance.getMostRecentTransaction(cfg['bank']['bank_id'], cfg['bank']['account'])
-  return most_recent_msg
+  print data['message']
+  ai_data_response = aiInstance.sendQuery(data['message'])
+  if ai_data_response['status']['code'] == 200:
+      response = aiInstance.methodChoice(ai_data_response)
+  else:
+      print "Failed to complete query request with error: {0}"\
+            .format(ai_data_response['status']['errorType'])
+  print response
+  return response
 
 
 def allowed_file(filename):

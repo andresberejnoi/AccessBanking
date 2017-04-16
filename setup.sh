@@ -21,9 +21,9 @@ fi
 pip install flask
 pip install pyyaml
 pip install requests
-#pip install numpy
-#pip install --upgrade tensorflow
+pip install flask-ask
 
+#pip install numpy
 # To deactivate the venv, use
 #
 # $ deactivate

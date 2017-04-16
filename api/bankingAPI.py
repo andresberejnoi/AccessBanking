@@ -126,7 +126,7 @@ class BankingApi:
         + response.json()\
         ['transactions'][transaction_number]['details']['value']['amount']
         return result
-    
+
     def getMostRecentTransaction(self,bank,account):
         response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
                                 .format(self.cfg['bank']['base_url'],\
@@ -138,18 +138,23 @@ class BankingApi:
         return result
 
 
-    def makePayment(self, mybank, myaccount, otherbank, otheraccount, amount):
-        post_data = {
-                "account_id" : '%s' % otheraccount,\
-                "bank_id" : '%s' % otherbank,\
-                "amount" : '%s' % amount
-                }
-        requests.post(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
-                    .format(self.cfg['bank']['base_url'],\
-                            self.cfg['bank']['api_version'],\
-                            mybank, myaccount),\
-                            json=post_data,\
-                            headers=self.mergeHeaders(DL_TOKEN,CONTENT_JSON))
-        result = "You have made a payment to bank " +  otherbank + " account "\
-        + " with an amount of $" + amount
+    def makePayment(self, mybank, myaccount, otheraccount, amount):
+        print self.getPrivateAccountNames(self.cfg['bank']['bank_id'])
+        if otheraccount in self.getPrivateAccountNames(self.cfg['bank']['bank_id']):
+            post_data = {
+                    "account_id" : '%s' % otheraccount,\
+                    "bank_id" : '%s' % mybank,\
+                    "amount" : '%s' % amount
+                    }
+            res = requests.post(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
+                                .format(self.cfg['bank']['base_url'],\
+                                    self.cfg['bank']['api_version'],\
+                                    mybank, myaccount),\
+                                    json=post_data,\
+                                    headers=self.mergeHeaders(DL_TOKEN,CONTENT_JSON))
+            print res.content
+            result = "You have made a payment to bank " +  mybank + " account "\
+            + " with an amount of $" + amount
+        else:
+            result = "Sorry you do not have an account named {}".format(otheraccount)
         return result
