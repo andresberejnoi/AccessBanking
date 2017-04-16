@@ -7,4 +7,4 @@ def load_config(file):
 
 
 if __name__ == "__main__":
-	print load_config()
+	print (load_config())
