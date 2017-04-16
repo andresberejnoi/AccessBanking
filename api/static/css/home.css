@@ -9,6 +9,11 @@
   color: gray;
 }
 
+.sound i{
+  font-size: 150px;
+  color: gray;
+}
+
 #info {
   margin-top: 3em;
   font-size: 20px;
