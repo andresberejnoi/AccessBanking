@@ -10,7 +10,9 @@ def home():
 def get_message():
   data = request.data
   data = json.loads(data)
-  return data['message']
+  #balance_msg = bankInstance.getBalance(cfg['bank']['bank_id'], cfg['bank']['account'])
+  most_recent_msg = bankInstance.getMostRecentTransaction(cfg['bank']['bank_id'], cfg['bank']['account'])
+  return most_recent_msg
 
 
 def allowed_file(filename):

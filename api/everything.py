@@ -31,8 +31,8 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 base_path = os.path.dirname(__file__)
 app = Flask(__name__)
 
-from api.util import load_config
-from api.bankingAPI import BankingApi
+from util import load_config
+from bankingAPI import BankingApi
 
 # cfg = load_config('/var/www/html/urcpp-flask/api/config.yaml')
 cfg = load_config(os.path.join(base_path, 'config.yml'))
@@ -42,4 +42,3 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 bankInstance = BankingApi(cfg)
 bankInstance.login(cfg['bank']['username'], cfg['bank']['password'])
-print (bankInstance.getBalance(cfg['bank']['bank_id'], cfg['bank']['account']))
