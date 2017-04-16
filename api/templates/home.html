@@ -1,70 +1,52 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="static/css/main.css">
-    <link rel="stylesheet" href="static/css/play.css">
-  </head>
-  <body>
-    <h1 class="center" id="headline">Accessible Banking</h1>
-    <h2 class="center">Personal finance for the visually impaired.</h2>
-    <div id="info">
-      <p id="info_start">Click on the microphone icon and begin speaking.</p>
-      <p id="info_speak_now">Speak now.</p>
-      <p id="info_no_speech">No speech was detected. You may need to adjust your
-        <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-          microphone settings</a>.</p>
-      <p id="info_no_microphone" style="display:none">
-        No microphone was found. Ensure that a microphone is installed and that
-        <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-        microphone settings</a> are configured correctly.</p>
-      <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
-      <p id="info_denied">Permission to use microphone was denied.</p>
-      <p id="info_blocked">Permission to use microphone is blocked. To change,
-        go to chrome://settings/contentExceptions#media-stream</p>
-      <p id="info_upgrade">Web Speech API is not supported by this browser.
-         Upgrade to <a href="//www.google.com/chrome">Chrome</a>
-         version 25 or later.</p>
+{% extends "base.html" %}
+{% set currentPage = "home" %}
+{% block body %}
+{% include "navbar.html" %}
+<div class="container">
+  <div class="row header">
+    <h1 class="center-align">Accessible Banking</h1>
+    <h4 class="center-align">Personal finance for the visually impaired.</h4>
+  </div>
+  <div id="info">
+    <p id="info_start">Click on the microphone icon and begin speaking.</p>
+    <p id="info_speak_now">Speak now.</p>
+  </div>
+  <div class="right">
+    <button id="start_button" onclick="startButton(event)">
+      <img id="start_img" src="static/images/mic.gif" alt="Start"></button>
+  </div>
+  <div id="results">
+    <span id="final_span" class="final"></span>
+    <span id="interim_span" class="interim"></span>
+    <p>
+  </div>
+  <div class="center-align">
+    <div id="div_language">
+      <select id="select_language" onchange="updateCountry()"></select>
+      &nbsp;&nbsp;
+      <select id="select_dialect"></select>
     </div>
-    <div class="right">
-      <button id="start_button" onclick="startButton(event)">
-        <img id="start_img" src="static/images/mic.gif" alt="Start"></button>
-    </div>
-    <div id="results">
-      <span id="final_span" class="final"></span>
-      <span id="interim_span" class="interim"></span>
-      <p>
-    </div>
-    <div class="center">
-      <div id="div_language">
-        <select id="select_language" onchange="updateCountry()"></select>
-        &nbsp;&nbsp;
-        <select id="select_dialect"></select>
-      </div>
-    </div>
-    <div>
-      <p id="msg"></p>
+  </div>
+  <div>
+    <p id="msg"></p>
 
-    	<div class="option">
-    		<label for="voice">Voice</label>
-    		<select name="voice" id="voice"></select>
-    	</div>
-    	<div class="option">
-    		<label for="volume">Volume</label>
-    		<input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
-    	</div>
-    	<div class="option">
-    		<label for="rate">Rate</label>
-    		<input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
-    	</div>
-    	<div class="option">
-    		<label for="pitch">Pitch</label>
-    		<input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
-    	</div>
+  	<div class="option">
+  		<label for="voice">Voice</label>
+  		<select name="voice" id="voice"></select>
+  	</div>
+  	<div class="option">
+  		<label for="volume">Volume</label>
+  		<input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
+  	</div>
+  	<div class="option">
+  		<label for="rate">Rate</label>
+  		<input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
+  	</div>
+  	<div class="option">
+  		<label for="pitch">Pitch</label>
+  		<input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+  	</div>
 
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="static/js/main.js" charset="utf-8"></script>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}

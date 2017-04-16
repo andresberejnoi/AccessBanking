@@ -42,4 +42,3 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 bankInstance = BankingApi(cfg)
 bankInstance.login(cfg['bank']['username'], cfg['bank']['password'])
-print (bankInstance.getBalance(cfg['bank']['bank_id'], cfg['bank']['account']))
