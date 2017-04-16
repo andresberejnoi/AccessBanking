@@ -1,0 +1,23 @@
+ShowAccounts	can you tell me what {optionsslot} i have
+ShowAccounts	display my {optionsslot}
+ShowAccounts	show my {optionsslot}
+ShowAccounts	what are my {optionsslot}
+ShowAccounts	what {optionsslot} do i have
+LastTransaction	{optionsslot}
+LastTransaction	show my {optionsslot}
+LastTransaction	what be my {optionsslot}
+LastTransaction	what is my {optionsslot}
+LastTransaction	what was my {optionsslot}
+ShowBalance	can you show me my {optionsslot}
+ShowBalance	how much {optionsslot} do i have
+ShowBalance	show me my {optionsslot}
+ShowBalance	what is my account {optionsslot}
+ShowBalance	what is my {optionsslot}
+ShowBalance	what is the {optionsslot} on my account
+MakePayment	{optionsslot}
+MakePayment	i want to {optionsslot}
+NumberTransactions	{optionsslot} on my account
+NumberTransactions	how mane {optionsslot} do i have
+NumberTransactions	how many {optionsslot} do i have
+NumberTransactions	how many {optionsslot} on my account
+NumberTransactions	tell me the {optionsslot} on my account
