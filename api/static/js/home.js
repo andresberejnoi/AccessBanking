@@ -69,7 +69,6 @@ select_language.selectedIndex = 6;
 updateCountry();
 select_dialect.selectedIndex = 6;
 showInfo('info_start');
-$('select').material_select();
 
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
@@ -123,7 +122,6 @@ if (!('webkitSpeechRecognition' in window)) {
 
   recognition.onend = function() {
     recognizing = false;
-    console.log(final_transcript);
     send_message(final_transcript)
     if (ignore_onend) {
       return;
@@ -207,43 +205,10 @@ function showInfo(s) {
 SPEAKING FUNCTIONS
 ******************************************************************************/
 
-// Get the voice select element.
-var voiceSelect = document.getElementById('voice');
-
 // Get the attribute controls.
 var volumeInput = document.getElementById('volume');
 var rateInput = document.getElementById('rate');
 var pitchInput = document.getElementById('pitch');
-
-
-// Fetch the list of voices and populate the voice options.
-function loadVoices() {
-  // Fetch the available voices.
-	var voices = speechSynthesis.getVoices();
-
-  // Loop through each of the voices.
-	voices.forEach(function(voice, i) {
-    // Create a new option element.
-		var option = document.createElement('option');
-
-    // Set the options value and text.
-		option.value = voice.name;
-		option.innerHTML = voice.name;
-
-    // Add the option to the voice selector.
-		voiceSelect.appendChild(option);
-	});
-}
-
-// Execute loadVoices.
-loadVoices();
-
-
-// Chrome loads voices asynchronously.
-window.speechSynthesis.onvoiceschanged = function(e) {
-  loadVoices();
-};
-
 
 // Create a new utterance for the specified text and add it to
 // the queue.
@@ -261,9 +226,7 @@ function speak(text) {
 
   // If a voice has been selected, find the voice and set the
   // utterance instance's voice attribute.
-	if (voiceSelect.value) {
-		msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == voiceSelect.value; })[0];
-	}
+	msg.voice = speechSynthesis.getVoices()[1];
 
   // Queue this utterance.
 	window.speechSynthesis.speak(msg);
@@ -294,3 +257,5 @@ function send_message(msg) {
   }
 
 }
+
+$('select').material_select();
