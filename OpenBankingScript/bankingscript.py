@@ -97,7 +97,7 @@ def getTransactions(bank, account):
 
 def getTransaction(bank_id, account_id, transaction_id):
     response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions/{4}/transaction".format(BASE_URL, API_VERSION, bank_id, account_id, transaction_id), headers=mergeHeaders(DL_TOKEN, CONTENT_JSON))
-    result = 'This transaction was made on ' + response.json()['details']['completed'].split('T')[0]
+    result = 'This transaction was made on ' + response.json()['details']['completed'].split('T')[0] + ' with an amount of ' + response.json()['details']['value']['amount']
     return result
 
 
