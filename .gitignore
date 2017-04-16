@@ -1,1 +1,4 @@
 key.txt
+*.pyc
+*.py~
+uploads/

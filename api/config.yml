@@ -1,0 +1,11 @@
+nutritionix:
+  appId: "866d4c5d"
+  appKey: "5b05da108864ed0575a27f406496a4a0"
+  url: "https://trackapi.nutritionix.com"
+  version: "v2"
+
+FoodRec:
+  labels: "../data/retrained_labels.txt"
+  graph: "../data/retrained_graph.pb"
+
+tag: "snapcal"
