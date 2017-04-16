@@ -81,7 +81,7 @@ class BankingApi:
     def getPrivateAccountNames(self, bank):
         accounts = []
         result = "Your accounts are "
-        for i in getPrivateAccounts(bank):
+        for i in self.getPrivateAccounts(bank):
             accounts.append(i['id'])
         for i in accounts:
             result += i + ' '
@@ -120,6 +120,16 @@ class BankingApi:
                                         headers=self.mergeHeaders(DL_TOKEN, CONTENT_JSON))
         result = 'This transaction was made on ' + response.json()['details']['completed'].split('T')[0]
         return result
+    
+    def getMostRecentTransaction(self,bank,account):
+        response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
+                                .format(self.cfg['bank']['base_url'],\
+                                self.cfg['bank']['api_version'],\
+                                bank,\
+                                account),\
+                                headers=self.mergeHeaders(DL_TOKEN, CONTENT_JSON))
+        result = 'Your most recent transaction was made on ' + response.json()['transactions'][0]['details']['completed'].split('T')[0] + ' with an amount of ' + response.json()['transactions'][0]['details']['value']['amount']
+        return result
 
 
     def makePayment(self, mybank, myaccount, otherbank, otheraccount, amount):
@@ -133,5 +143,5 @@ class BankingApi:
                             self.cfg['bank']['api_version'],\
                             mybank, myaccount),\
                             json=post_data,\
-                            headers=self.`mergeHeaders(DL_TOKEN,CONTENT_JSON))
+                            headers=self.mergeHeaders(DL_TOKEN,CONTENT_JSON))
         return response
