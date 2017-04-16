@@ -1,8 +1,16 @@
 bank:
-  base_url: "https://apisandbox.openbankproject.com"
+  base_url: 'https://apisandbox.openbankproject.com'
   api_version: 'v2.0.0'
   username: 'sharrona'
-  password: "ImpendingD00m!"
+  password: 'ImpendingD00m!'
   consumer_key: '1hkd22qklce12luoftpblfaalbcj0t2u1ikqddju'
   bank_id: 'op.02.us'
   account: 'bereatest'
+
+api-ai:
+  base_url: 'https://api.api.ai/api/query'
+  v: '20150910'
+  timezone: 'GMT-5'
+  lang: 'en'
+  sessionId: 'asdasd7qe78q9328'
+  access_token: '28c29b3a1f734ca89961fd4592b1e785'
