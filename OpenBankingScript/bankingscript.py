@@ -88,7 +88,7 @@ def getBalance(bank,account):
     return result
 
 #Gets all transactions made on an account
-def getTransactions(bank, account):
+def getNumberOfTransactions(bank, account):
     
     response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions".format(BASE_URL, API_VERSION, bank, account), headers=mergeHeaders(DL_TOKEN, CONTENT_JSON))
     result = 'You have had ' +  str(len(response.json()['transactions'])) + ' transactions'
@@ -100,6 +100,11 @@ def getTransaction(bank_id, account_id, transaction_id):
     result = 'This transaction was made on ' + response.json()['details']['completed'].split('T')[0] + ' with an amount of ' + response.json()['details']['value']['amount']
     return result
 
+def getMostRecentTransaction(bank,account):
+    response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions".format(BASE_URL, API_VERSION, bank, account), headers=mergeHeaders(DL_TOKEN, CONTENT_JSON))
+    result = 'Your most recent transaction was made on ' + response.json()['transactions'][0]['details']['completed'].split('T')[0] + ' with an amount of ' + response.json()['transactions'][0]['details']['value']['amount']
+    return result
+
 
 def makePayment(mybank,myaccount,otherbank,otheraccount,amount):
     post_data = {
@@ -108,8 +113,9 @@ def makePayment(mybank,myaccount,otherbank,otheraccount,amount):
             "amount" : '%s' % amount
             }
     
-    response = requests.post(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions".format(BASE_URL,API_VERSION,mybank,myaccount),json=post_data,headers=mergeHeaders(DL_TOKEN,CONTENT_JSON))
-    return response
+    requests.post(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions".format(BASE_URL,API_VERSION,mybank,myaccount),json=post_data,headers=mergeHeaders(DL_TOKEN,CONTENT_JSON))
+    result = "You made a payment to " + otheraccount + " with an amount of " + amount
+    return result
 
 
 
