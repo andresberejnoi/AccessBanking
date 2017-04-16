@@ -5,6 +5,7 @@ class ApiAi:
     def __init__(self, cfg):
         self.cfg = cfg
         self.bankapi = BankingApi(self.cfg)
+        self.myAccount = cfg['bank']['account']
 
     def sendQuery(self, query):
 
@@ -27,12 +28,12 @@ class ApiAi:
     def balance(self):
 
         return self.bankapi.getBalance(bank=self.cfg['bank']['bank_id'],\
-                            account=self.cfg['bank']['account'])
+                            account=self.myAccount)
 
     def numberOfTransactions(self):
 
         return self.bankapi.getNumberOfTransactions(bank=self.cfg['bank']['bank_id'],\
-                                         account=self.cfg['bank']['account'])
+                                         account=self.myAccount)
 
     def showAccounts(self):
 
@@ -41,17 +42,17 @@ class ApiAi:
     def lastTransaction(self):
 
         return self.bankapi.getMostRecentTransaction(bank=self.cfg['bank']['bank_id'],\
-                                          account=self.cfg['bank']['account'])
+                                          account=self.myAccount)
 
     def indexedTransaction(self):
 
         return self.bankapi.getTransactionNumber(bank=self.cfg['bank']['bank_id'],\
-                                      account=self.cfg['bank']['account'],transaction_number=1)
+                                      account=self.myAccount,transaction_number=1)
 
     def makePayment(self,otherbank,otheraccount,amount):
 
         return self.bankapi.makePayment(mybank=self.cfg['bank']['bank_id'],\
-                             myaccount=self.cfg['bank']['account'],\
+                             myaccount=self.myAccount,\
                              otheraccount=otheraccount,amount=amount)
 
     def methodChoice(self,data):
@@ -78,6 +79,9 @@ class ApiAi:
         else:
             return "Sorry, something went wrong. I am still in development."
 
+    def switch_account(self,otheraccount):
+        if otheraccount in self.bankapi.getPrivateAccounts(self.cfg['bank']['bank_id']):
+            self.myAccount = otheraccount
 
 
 if __name__ == "__main__":

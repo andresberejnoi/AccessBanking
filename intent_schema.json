@@ -1,0 +1,36 @@
+{
+  "intents": [
+    {
+      "intent": "YesIntent"
+    },
+    {
+      "intent": "NoIntent"
+    },
+    {
+      "intent": "Balance"
+    },
+    {
+      "slots": [
+        {
+          "name": "amount",
+          "type": "AMAZON.NUMBER"
+        },
+        {
+          "name": "account_name",
+          "type": "AMAZON.LITERAL"
+        }
+      ],
+      "intent": "SendMoney"
+    },
+    {
+        "intent":"ShowAccount"
+    },
+    {
+        "intent":"LastTransaction"
+    },
+
+    {
+        "intent":"NumberTransactions"
+    }
+  ]
+}

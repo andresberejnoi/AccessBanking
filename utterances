@@ -1,0 +1,29 @@
+YesIntent yes
+YesIntent sure
+NoIntent no
+NoIntent go away
+Balance show my balance
+Balance check my balance
+Balance how much money do I have
+Balance hoe much do I have in my bank account
+Balance what is my account balance
+SendMoney send {amount} to {savings | account_name} account
+SendMoney pay {amount} to {savings | account_name} account
+SendMoney send {amount} dollars to {savings | account_name} account
+SendMoney send {amount} dollars to {savings | account_name} account
+SendMoney transfer {amount} to {savings | account_name} account
+ShowAccounts show my accounts
+ShowAccounts what accounts do I have
+ShowAccounts name my accounts
+ShowAccounts list my accounts
+
+LastTransaction what is my most recent transaction
+LastTransaction what was my last payment
+LastTransaction what was my last purchase
+LastTransaction most recent transaction
+LastTransaction last transaction
+
+NumberTransactions how many transactions have I made
+NumberTransactions what is my number of transactions
+NumberTransactions number of purchases
+NumberTransactions number of payments

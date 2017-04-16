@@ -139,8 +139,8 @@ class BankingApi:
 
 
     def makePayment(self, mybank, myaccount, otheraccount, amount):
-        print self.getPrivateAccountNames(self.cfg['bank']['bank_id'])
-        if otheraccount in self.getPrivateAccountNames(self.cfg['bank']['bank_id']):
+        #print self.getPrivateAccountNames(self.cfg['bank']['bank_id'])
+        if otheraccount in self.getPrivateAccounts(self.cfg['bank']['bank_id']):
             post_data = {
                     "account_id" : '%s' % otheraccount,\
                     "bank_id" : '%s' % mybank,\

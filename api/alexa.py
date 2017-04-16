@@ -17,7 +17,7 @@ def send_money(amount, account_name):
     message = bankInstance.makePayment(mybank=cfg['bank']['bank_id'],\
                          myaccount=cfg['bank']['account'],\
                          otheraccount=account_name, amount=str(amount))
-    return statement(message)
+    return question(message)
 
 @ask.intent("YesIntent")
 def share_headlines():
@@ -34,3 +34,19 @@ def no_intent():
 def show_accounts():
     message = bankInstance.showAccounts()
     return question(message)
+
+@ask.intent("LastTransaction")
+def get_last_transaction():
+    message= bankInstance.getMostRecentTransaction(cfg['bank']['bank_id'],cfg['bank']['account'])
+    return question(message)
+
+@ask.intent("NumberTransactions")
+def get_num_transactions():
+    message = bankInstance.numberOfTransactions()
+    return question(message)
+    
+    
+    
+    
+    
+    
