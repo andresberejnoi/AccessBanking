@@ -1,7 +1,3 @@
-YesIntent yes
-YesIntent sure
-NoIntent no
-NoIntent go away
 Balance show my balance
 Balance check my balance
 Balance how much money do I have
@@ -16,6 +12,7 @@ ShowAccounts show my accounts
 ShowAccounts what accounts do I have
 ShowAccounts name my accounts
 ShowAccounts list my accounts
+ShowAccounts show accounts
 
 LastTransaction what is my most recent transaction
 LastTransaction what was my last payment
@@ -27,3 +24,7 @@ NumberTransactions how many transactions have I made
 NumberTransactions what is my number of transactions
 NumberTransactions number of purchases
 NumberTransactions number of payments
+
+SwitchAccount switch account to {checkings | account_name}
+SwitchAccount change account to {checkings | account_name}
+SwitchAccount tell me about {checkings | account_name} account

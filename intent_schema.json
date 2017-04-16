@@ -1,12 +1,6 @@
 {
   "intents": [
     {
-      "intent": "YesIntent"
-    },
-    {
-      "intent": "NoIntent"
-    },
-    {
       "intent": "Balance"
     },
     {
@@ -23,7 +17,7 @@
       "intent": "SendMoney"
     },
     {
-        "intent":"ShowAccount"
+        "intent":"ShowAccounts"
     },
     {
         "intent":"LastTransaction"
@@ -31,6 +25,15 @@
 
     {
         "intent":"NumberTransactions"
+    },
+    {
+      "intent": "SwitchAccount",
+      "slots": [
+        {
+          "name": "account_name",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
     }
   ]
 }

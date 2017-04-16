@@ -96,7 +96,7 @@ class BankingApi:
                             account),\
                             headers=self.mergeHeaders(DL_TOKEN, CONTENT_JSON))
         balance = response.json()['balance']['amount']
-        result = 'Your balance is $' + balance
+        result = 'The balance for your {0} accounnt is ${1}'.format(account, balance)
         return result
 
     #Gets all transactions made on an account
@@ -158,3 +158,7 @@ class BankingApi:
         else:
             result = "Sorry you do not have an account named {}".format(otheraccount)
         return result
+
+    def changeAccounts(self, new_account):
+        self.cfg['bank']['account'] = new_account
+        return "Account switched to {}. What do you want to know".format(new_account)
