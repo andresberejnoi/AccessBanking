@@ -100,7 +100,7 @@ class BankingApi:
         return result
 
     #Gets all transactions made on an account
-    def getTransactions(self, bank, account):
+    def getNumberOfTransactions(self, bank, account):
 
         response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
                                 .format(self.cfg['bank']['base_url'],\
@@ -112,13 +112,19 @@ class BankingApi:
         return result
 
 
-    def getTransaction(self, bank, account, transaction_id):
-        response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions/{4}/transaction"\
+    def getTransactionNumber(self, bank, account, transaction_number):
+        transaction_number -= 1
+        response = requests.get(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
                                 .format(self.cfg['bank']['base_url'],\
-                                        self.cfg['bank']['api_version'],\
-                                        bank, account, transaction_id),\
-                                        headers=self.mergeHeaders(DL_TOKEN, CONTENT_JSON))
-        result = 'This transaction was made on ' + response.json()['details']['completed'].split('T')[0]
+                                self.cfg['bank']['api_version'],\
+                                bank,\
+                                account),\
+                                headers=self.mergeHeaders(DL_TOKEN, CONTENT_JSON))
+        result = 'Transaction ' + str(transaction_number) + "was made on "\
+        + response.json()['transactions'][transaction_number]['details']['completed']\
+        .split('T')[0] + ' with an amount of $'\
+        + response.json()\
+        ['transactions'][transaction_number]['details']['value']['amount']
         return result
     
     def getMostRecentTransaction(self,bank,account):
@@ -138,10 +144,12 @@ class BankingApi:
                 "bank_id" : '%s' % otherbank,\
                 "amount" : '%s' % amount
                 }
-        response = requests.post(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
+        requests.post(u"{0}/obp/{1}/banks/{2}/accounts/{3}/owner/transactions"\
                     .format(self.cfg['bank']['base_url'],\
                             self.cfg['bank']['api_version'],\
                             mybank, myaccount),\
                             json=post_data,\
                             headers=self.mergeHeaders(DL_TOKEN,CONTENT_JSON))
-        return response
+        result = "You have made a payment to bank " +  otherbank + " account "\
+        + " with an amount of $" + amount
+        return result
