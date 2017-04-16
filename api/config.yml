@@ -1,11 +1,8 @@
-nutritionix:
-  appId: "866d4c5d"
-  appKey: "5b05da108864ed0575a27f406496a4a0"
-  url: "https://trackapi.nutritionix.com"
-  version: "v2"
-
-FoodRec:
-  labels: "../data/retrained_labels.txt"
-  graph: "../data/retrained_graph.pb"
-
-tag: "snapcal"
+bank:
+  base_url: "https://apisandbox.openbankproject.com"
+  api_version: 'v2.0.0'
+  username: 'sharrona'
+  password: "ImpendingD00m!"
+  consumer_key: '1hkd22qklce12luoftpblfaalbcj0t2u1ikqddju'
+  bank_id: 'op.02.us'
+  account: 'bereatest'

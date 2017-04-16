@@ -21,6 +21,4 @@ else:
 
 print ("Running at http://{0}:{1}/".format(IP, PORT))
 
-app.tag = cfg['tag']
-
 app.run(host = IP, port = PORT, debug = True, threaded = True)
