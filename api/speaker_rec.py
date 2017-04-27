@@ -9,6 +9,7 @@ import numpy as np
 import scipy
 from scipy.io import wavfile        #works with 16 and 32 bit audio files, but not 24
 import pyaudio as pa
+import sys
 #from scipy.io.wavfile import read   #reads wavfiles
 
 def readSoundData(filename):
@@ -29,6 +30,14 @@ def LSTM_net(data):
     
 
 if __name__ == '__main__':
+    try:
+        #provide outfile for sound to be saved to. It has to be .wav for now
+        outfile = sys.argv[1]
+    except IndexError:
+        #if no output filename is proided, use default:
+        outfile = "test.wav"
+        
+    
     #some testing variables
     RATE = 16000
     CHUNKSIZE = 1024
@@ -60,7 +69,7 @@ if __name__ == '__main__':
     audio.terminate()
     
     #write to file
-    writeSoundData("AudioData/test.wav",RATE,numpydata)
+    writeSoundData(outfile,RATE,numpydata)
     
     
     
