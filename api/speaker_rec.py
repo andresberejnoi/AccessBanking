@@ -20,6 +20,9 @@ def writeSoundData(outname,samplerate,data):
 
 #Create network model (LSTM seems like a good choice)
 def LSTM_net(data):
+    """Placeholder function for now. 
+    
+    """
     inputs = tf.placeholder(dtype=tf.int16)
     hidden_1 = tf.Variable()
     hidden_1 = tf.Variable(tf.random_uniform(shape=[]))
@@ -58,6 +61,8 @@ if __name__ == '__main__':
     
     #write to file
     writeSoundData("AudioData/test.wav",RATE,numpydata)
+    
+    
     
     
     
