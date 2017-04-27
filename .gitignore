@@ -3,3 +3,4 @@ key.txt
 *.py~
 uploads/
 venv/
+api/AudioData/
