@@ -1,6 +1,7 @@
 key.txt
 *.pyc
 *.py~
+*.wav
 uploads/
 venv/
 api/AudioData/
