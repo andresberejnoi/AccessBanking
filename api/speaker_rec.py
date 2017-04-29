@@ -5,6 +5,7 @@ https://www.slideshare.net/mchua/sigproc-selfstudy-17323823
 """
 
 import tensorflow as tf
+from tensorflow.contrib import rnn
 import numpy as np
 import scipy
 from scipy.io import wavfile        #works with 16 and 32 bit audio files, but not 24
@@ -24,9 +25,12 @@ def LSTM_net(data):
     """Placeholder function for now. 
     
     """
+    n_hidden = 256
     inputs = tf.placeholder(dtype=tf.int16)
     hidden_1 = tf.Variable()
     hidden_1 = tf.Variable(tf.random_uniform(shape=[]))
+    
+    cell1 = rnn.BasicLSTMCell(n_hidden)
     
 
 if __name__ == '__main__':
