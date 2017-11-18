@@ -3,3 +3,6 @@ key.txt
 *.py~
 uploads/
 venv/
+AudioData/
+*mp3
+*wav
